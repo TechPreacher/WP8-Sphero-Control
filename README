@@ -1,0 +1,21 @@
+﻿This project has been created for demo purposes by sascha@corti.com (@TechPreacher).
+
+WP8-Sphero is a remote control app for the Sphero robotic ball by Orbotix (http://www.gosphero.com/).
+
+To use this application, first, turn Sphero on. To do so, take it from the dock and shake it until it blinks in three colors. While Sphero blinks in three colors, it is ready for Bluetooth pairing. Make sure your Sphero is paired and that Bluetooth is turned on via Phone settings -> Bluetooth. Don't worry about connecting it each time via the phone's Bluetooth settings, this app will do that for you. 
+Hit the "Connect" button in this app. Sphero should change to a solid color and the app should confirm the connection.
+Now find the Sphero Calibration controls in this app's main screen to set the Sphero's orientation - actually, it's "back side". To do so, hit the "On" button. You will see a blue dot on the Sphero. Use the "Left" and "Right" buttons to move this dot, usually until it faces you. You can then press the "Off" button to hide the dot again.
+When you touch the white control area, the Sphero starts to move. If you touch the control above the center, the Sphero drives forward. If you touch it below the center, the Sphero will go backward and so on. The further away from the middle you touch the control, the faster Sphero will go. When you lift your finger, the Sphero will stop. The "Color" button lets you change Sphero's color. Have fun piloting!
+
+
+This project uses the following 3rd party libraries to display the color picker:
+
+- Coding4Fun.Phone.Controls (http://coding4fun.codeplex.com/)
+- Microsoft.Phone.Controls.Toolkit (http://phone.codeplex.com/)
+
+Both have been added to the project using NuGet for Visual Studio.
+
+
+Known issues:
+
+Connecting to the Sphero device via bluetooth may sometimes fail at the first attempt but works at subsequent attempts.

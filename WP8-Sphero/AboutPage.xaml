@@ -1,0 +1,73 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WP8_Sphero.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="about sphero control" Margin="9,-7,0,0" FontSize="46"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        	<ScrollViewer HorizontalAlignment="Left" Height="596" VerticalAlignment="Top" Width="456">
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="966" Width="456">
+        			<Run Text="Welcome to the Orbotix Sphero Control app for Windows Phone 8!"/>
+        			<LineBreak/>
+        			<Run/>
+        			<LineBreak/>
+        			<Run Text="First, turn Sphero on. Take it from the dock and shake it until it blinks in three colors."/>
+        			<LineBreak/>
+        			<Run/>
+        			<LineBreak/>
+        			<Run Text="While Sphero blinks in three colors, it is ready for Bluetooth pairing. Make sure your Sphero is paired and that Bluetooth is turned on via Phone settings -&gt; Bluetooth. Don't worry about connecting it each time via the phone's Bluetooth settings, this app will do that for you. "/>
+        			<LineBreak/>
+        			<Run/>
+        			<LineBreak/>
+        			<Run Text="Hit the &quot;Connect&quot; button in this app. Sphero should change to a solid color and the app should confirm the connection."/>
+        			<LineBreak/>
+        			<Run/>
+        			<LineBreak/>
+        			<Run Text="Now find the Sphero Calibration controls in this app's main screen to set the Sphero's orientation - actually, it's &quot;back side&quot;. To do so, hit the &quot;On&quot; button. You will see a blue dot on the Sphero. Use the &quot;Left&quot; and &quot;Right&quot; buttons to move this dot, usually until it faces you. You can then press the &quot;Off&quot; button to hide the dot again."/>
+        			<LineBreak/>
+        			<Run/>
+        			<LineBreak/>
+        			<Run Text="When you touch the white control area, the Sphero starts to move. If you touch the control above the center, the Sphero drives forward. If you touch it below the center, the Sphero will go backward and so on. The further away from the middle you touch the control, the faster Sphero will go. When you lift your finger, the Sphero will stop."/>
+        			<LineBreak/>
+        			<Run/>
+        			<LineBreak/>
+        			<Run Text="The &quot;Color&quot; button lets you change Sphero's color."/>
+        			<LineBreak/>
+        			<Run/>
+        			<LineBreak/>
+        			<Run Text="Have fun piloting!"/>
+        			<LineBreak/>
+        			<Run/>
+        			<LineBreak/>
+        			<Run Text="This app was written by @TechPreacher."/>
+        		</TextBlock>
+        	</ScrollViewer>
+        	<CheckBox x:Name="checkboxShow" Content="Show on Startup" HorizontalAlignment="Center" Margin="0,0,222,0" VerticalAlignment="Bottom" Checked="checkboxShow_Checked" Unchecked="checkboxShow_Unchecked"/>
+            <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="308,596,0,0" VerticalAlignment="Top" Width="148" Click="btnClose_Click"/>
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

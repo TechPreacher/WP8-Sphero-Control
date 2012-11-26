@@ -1,6 +1,6 @@
 ﻿This project has been created for demo purposes by sascha@corti.com (@TechPreacher).
 
-WP8-Sphero is a remote control app for the Sphero robotic ball by Orbotix (http://www.gosphero.com/).
+WP8-Sphero is a Windows Phone 8 implementation of the remote control app for the Sphero robotic ball by Orbotix (http://www.gosphero.com/).
 
 To use this application, first, turn Sphero on. To do so, take it from the dock and shake it until it blinks in three colors. While Sphero blinks in three colors, it is ready for Bluetooth pairing. Make sure your Sphero is paired and that Bluetooth is turned on via Phone settings -> Bluetooth. Don't worry about connecting it each time via the phone's Bluetooth settings, this app will do that for you. 
 Hit the "Connect" button in this app. Sphero should change to a solid color and the app should confirm the connection.

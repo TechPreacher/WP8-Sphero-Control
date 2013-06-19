@@ -13,8 +13,9 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//    
+//
 -->
+    
 <phone:PhoneApplicationPage
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -30,6 +31,15 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
+    
+	<phone:PhoneApplicationPage.Resources>
+		<Storyboard x:Name="storyboard_txtConnecting" AutoReverse="True" RepeatBehavior="Forever">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="txtConnecting">
+				<EasingColorKeyFrame KeyTime="0" Value="White"/>
+				<EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FF646464"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+	</phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -64,22 +74,29 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock HorizontalAlignment="Left" Height="37" Margin="17,555,0,0" TextWrapping="NoWrap" Text="Sphero Calibration:" VerticalAlignment="Top" Width="174"/>
+            <TextBlock x:Name="txtSpheroCalibrationTitle" HorizontalAlignment="Left" Height="37" Margin="17,555,0,0" TextWrapping="NoWrap" Text="Sphero Calibration:" VerticalAlignment="Top" Width="174"/>
 
             <Button x:Name="btnConnect" Content="Connect" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnConnect_Click" Width="150" Visibility="{Binding IsConnected, Converter={StaticResource invisibilityConverter}}" />
             <Button x:Name="btnDisconnect" Content="Discon" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnDisconnect_Click" Width="150" Visibility="{Binding IsConnected, Converter={StaticResource visibilityConverter}}"/>
             <Button x:Name="btnAbout" Content="?" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Top" Click="btnAbout_Click" Width="85" />
 
-            <Rectangle Fill="{Binding SpheroColor, Converter={StaticResource colorConverter}}" HorizontalAlignment="Left" Height="50" Margin="264,11,0,0" Stroke="Black" VerticalAlignment="Top" Width="50"/>
-            <Button x:Name="btnChangeColor" Content="Color" HorizontalAlignment="Left" Margin="306,0,0,0" VerticalAlignment="Top" Click="btnChangeColor_Click" Width="150" />
+            <Rectangle x:Name="rectColorSwatch" Fill="{Binding SpheroColor, Converter={StaticResource colorConverter}}" HorizontalAlignment="Left" Height="50" Margin="264,11,0,0" Stroke="Black" VerticalAlignment="Top" Width="50"/>
+            <Button x:Name="btnChangeColor" Content="Color" HorizontalAlignment="Left" Margin="306,0,0,0" VerticalAlignment="Top" Click="btnChangeColor_Click" Width="150" IsEnabled="{Binding IsConnected, Converter={StaticResource boolInverseConverter}}" />
 
             <WP8_Joystick:Joystick x:Name="joystick" HorizontalAlignment="Left" Height="420" Margin="18,101,0,0" VerticalAlignment="Top" Width="420" TimerMilliSeconds="500" NewCoordinates="joystick_NewCoordinates" Stop="joystick_Stop"/>
-            
-            <Button x:Name="btnBackLedOn" Content="On" HorizontalAlignment="Left" Margin="118,584,0,0" VerticalAlignment="Top" Click="btnBackLedOn_Click" Width="104"/>
-            <Button x:Name="btnBackLedOff" Content="Off" HorizontalAlignment="Left" Margin="235,584,0,0" VerticalAlignment="Top" Click="btnBackLedOff_Click" Width="104"/>
-            <Button x:Name="btnSetHeadingLeft" Content="Left" HorizontalAlignment="Left" Margin="0,584,0,0" VerticalAlignment="Top" Click="btnSetHeadingLeft_Click" Width="104" />
-            <Button x:Name="btnSetHeadingRight" Content="Right" HorizontalAlignment="Left" Margin="352,584,0,0" VerticalAlignment="Top" Click="btnSetHeadingRight_Click" Width="104" />
+            <Rectangle x:Name="rectJoystickHider" Fill="#50000000" HorizontalAlignment="Left" Height="473" Margin="0,77,0,0" Stroke="Black" VerticalAlignment="Top" Width="456" Visibility="{Binding IsConnected, Converter={StaticResource invisibilityConverter}}"/>
 
+            <Button x:Name="btnBackLedOn" Content="On" HorizontalAlignment="Left" Margin="118,584,0,0" VerticalAlignment="Top" Click="btnBackLedOn_Click" Width="104" IsEnabled="{Binding IsConnected, Converter={StaticResource boolInverseConverter}}" />
+            <Button x:Name="btnBackLedOff" Content="Off" HorizontalAlignment="Left" Margin="235,584,0,0" VerticalAlignment="Top" Click="btnBackLedOff_Click" Width="104" IsEnabled="{Binding IsConnected, Converter={StaticResource boolInverseConverter}}" />
+            <Button x:Name="btnSetHeadingLeft" Content="Left" HorizontalAlignment="Left" Margin="0,584,0,0" VerticalAlignment="Top" Click="btnSetHeadingLeft_Click" Width="104" IsEnabled="{Binding IsConnected, Converter={StaticResource boolInverseConverter}}" />
+            <Button x:Name="btnSetHeadingRight" Content="Right" HorizontalAlignment="Left" Margin="352,584,0,0" VerticalAlignment="Top" Click="btnSetHeadingRight_Click" Width="104" IsEnabled="{Binding IsConnected, Converter={StaticResource boolInverseConverter}}" />
+            
+
+        </Grid>
+
+        <Grid x:Name="gridConnecting" Grid.RowSpan="2" Visibility="{Binding IsConnecting, Converter={StaticResource visibilityConverter}}" LayoutUpdated="gridConnecting_LayoutUpdated">
+        	<Rectangle x:Name="rectShade" Fill="#BF000000" Stroke="Black"/>
+        	<TextBlock x:Name="txtConnecting" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Connecting..." VerticalAlignment="Center"/>
         </Grid>
 
 

@@ -179,11 +179,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Coding4Fun.Phone.Controls">
-      <HintPath>..\packages\Coding4Fun.Phone.Controls.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Controls.dll</HintPath>
+    <Reference Include="Coding4Fun.Toolkit.Controls">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Controls.2.0.6\lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
-      <HintPath>..\packages\WPtoolkit.4.2012.10.30\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+      <HintPath>..\packages\WPToolkit.4.2013.06.11\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

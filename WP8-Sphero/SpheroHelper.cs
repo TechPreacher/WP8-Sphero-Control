@@ -42,6 +42,18 @@ namespace WP8_Sphero
                 OnPropertyChanged("IsConnected");
             }
         }
+
+        private bool isConnecting;
+        public bool IsConnecting
+        {
+            get { return isConnecting; }
+            set
+            {
+                isConnecting = value;
+                OnPropertyChanged("IsConnecting");
+            }
+        }
+
         private Color spheroColor;
         public Color SpheroColor
         {
@@ -52,8 +64,7 @@ namespace WP8_Sphero
                 OnPropertyChanged("SpheroColor");
             }
         }
-
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
@@ -61,11 +72,11 @@ namespace WP8_Sphero
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }       
-
-
+        
         public SpheroHelper()
         {
             this.isConnected = false;
+            this.isConnecting = false;
             this.spheroColor = new Color();
             spheroColor.A = 255; spheroColor.R = 255; spheroColor.G = 255; spheroColor.B = 255;
 
@@ -73,6 +84,8 @@ namespace WP8_Sphero
 
         public async void Bluetooth_ConnectToSphero()
         {
+            this.IsConnecting = true;
+
             PeerFinder.AlternateIdentities["Bluetooth:Paired"] = "";
 
             try
@@ -102,11 +115,12 @@ namespace WP8_Sphero
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("No bluetooth devices found. Is Sphero paired and on (blinking in 3 colors)?");
-                return;
+                MessageBox.Show("No bluetooth devices found. Is Bluetooth turned on? Is Sphero paired and on (blinking in 3 colors)?");
             }
+
+            this.IsConnecting = false;
         }
 
         public void Bluetooth_Disconnect()

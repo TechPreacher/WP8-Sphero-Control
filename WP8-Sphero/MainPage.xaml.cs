@@ -27,7 +27,6 @@ using WP8_Sphero.Resources;
 using System.Windows.Media;
 using WP8_Joystick;
 
-
 namespace WP8_Sphero
 {
     public partial class MainPage : PhoneApplicationPage
@@ -39,9 +38,8 @@ namespace WP8_Sphero
         public MainPage()
         {
             InitializeComponent();
-
+            
             LayoutRoot.DataContext = App.spheroHelper;
-
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -53,9 +51,8 @@ namespace WP8_Sphero
                 return;
             }
 
-
             joystick.StartJoystick();
-
+            
             isAppJustStarted = false;
             base.OnNavigatedTo(e);
         }
@@ -66,7 +63,6 @@ namespace WP8_Sphero
             
             base.OnNavigatedFrom(e);
         }
-
 
         private void btnConnect_Click(object sender, RoutedEventArgs e)
         {
@@ -99,28 +95,50 @@ namespace WP8_Sphero
 
         private void btnBackLedOn_Click(object sender, RoutedEventArgs e)
         {
+            if (!App.spheroHelper.IsConnected)
+            {
+                MessageBox.Show("Connect to Sphero first.");
+                return;
+            }
+
             App.spheroHelper.Bluetooth_ShowBackLed(255);
         }
 
         private void btnBackLedOff_Click(object sender, RoutedEventArgs e)
         {
+            if (!App.spheroHelper.IsConnected)
+            {
+                MessageBox.Show("Connect to Sphero first.");
+                return;
+            }
+
             App.spheroHelper.Bluetooth_SetHeading(0);
             App.spheroHelper.Bluetooth_ShowBackLed(0);
         }
 
-
         private void btnSetHeadingLeft_Click(object sender, RoutedEventArgs e)
         {
+            if (!App.spheroHelper.IsConnected)
+            {
+                MessageBox.Show("Connect to Sphero first.");
+                return;
+            }
+
             App.spheroHelper.Bluetooth_SetHeading(22);
         }
 
         private void btnSetHeadingRight_Click(object sender, RoutedEventArgs e)
         {
+            if (!App.spheroHelper.IsConnected)
+            {
+                MessageBox.Show("Connect to Sphero first.");
+                return;
+            }
+
             App.spheroHelper.Bluetooth_SetHeading(338);
         }
         
         // DRIVING
-
 
         private void joystick_NewCoordinates(object sender, EventArgs e)
         {
@@ -133,9 +151,19 @@ namespace WP8_Sphero
             App.spheroHelper.Bluetooth_Roll(currentDirection, 0);
         }
 
+        // OTHER EVENT HANDLERS
+
         private void NavigateTo(string page)
         {
             NavigationService.Navigate(new Uri(page, UriKind.Relative));
+        }
+
+        private void gridConnecting_LayoutUpdated(object sender, EventArgs e)
+        {
+            if (gridConnecting.Visibility == Visibility.Visible)
+                storyboard_txtConnecting.Begin();
+            else
+                storyboard_txtConnecting.Stop();
         }
 
     }

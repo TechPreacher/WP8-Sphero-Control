@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{2ff9c6d8-4bc2-457b-8600-8c46c6138df1}" Title="WP8 Sphero" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="WP8_Sphero author" Description="Sphero remote control app for Windows Phone 8." Publisher="WP8_Sphero" PublisherID="{4fb82ce6-396a-45bb-a0f9-0febfed2067e}">
+  <App xmlns="" ProductID="{2ff9c6d8-4bc2-457b-8600-8c46c6138df1}" Title="Sphero Control" RuntimeType="Silverlight" Version="1.0.0.1" Genre="apps.normal" Author="TechPreacher" Description="Sphero remote control app for Windows Phone 8." Publisher="TechPreacher" PublisherID="{4fb82ce6-396a-45bb-a0f9-0febfed2067e}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_NETWORKING" />
-      <Capability Name="ID_CAP_SENSORS" />
-      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
       <Capability Name="ID_CAP_PROXIMITY" />
+      <Capability Name="ID_CAP_NETWORKING" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
@@ -18,7 +16,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>WP8 Sphero</Title>
+          <Title>Sphero Control</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>

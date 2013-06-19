@@ -10,6 +10,7 @@
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:WP8_Sphero" x:Key="LocalizedStrings"/>
         <local:BoolConverter xmlns:local="clr-namespace:WP8_Sphero" x:Key="boolConverter" />
+        <local:BoolInverseConverter xmlns:local="clr-namespace:WP8_Sphero" x:Key="boolInverseConverter" />
         <local:VisibilityConverter xmlns:local="clr-namespace:WP8_Sphero" x:Key="visibilityConverter" />
         <local:InvisibilityConverter xmlns:local="clr-namespace:WP8_Sphero" x:Key="invisibilityConverter" />
         <local:ColorConverter xmlns:local="clr-namespace:WP8_Sphero" x:Key="colorConverter" />
